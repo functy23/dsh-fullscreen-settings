@@ -1,0 +1,114 @@
+<div align="center">
+
+<img src="assets/icon.svg" width="96" height="96" alt="dsh-fullscreen-settings"/>
+
+# dsh-fullscreen-settings
+
+**Turn the DSH settings dialog into a Codex-style full-page settings screen.**
+
+![Project](https://img.shields.io/badge/project-dsh--fullscreen--settings-4F46E5)
+![Language](https://img.shields.io/badge/language-JavaScript-F7DF1E?logo=javascript&logoColor=black)
+![Top Language](https://img.shields.io/github/languages/top/functy23/dsh-fullscreen-settings)
+![Platform](https://img.shields.io/badge/platform-macOS%20%7C%20Windows%20%7C%20Linux-lightgrey)
+
+![License](https://img.shields.io/github/license/functy23/dsh-fullscreen-settings)
+
+![Downloads](https://img.shields.io/github/downloads/functy23/dsh-fullscreen-settings/total)
+![Stars](https://img.shields.io/github/stars/functy23/dsh-fullscreen-settings)
+![Repo Size](https://img.shields.io/github/repo-size/functy23/dsh-fullscreen-settings)
+![Contributors](https://img.shields.io/github/contributors/functy23/dsh-fullscreen-settings)
+
+[Issues](https://github.com/functy23/dsh-fullscreen-settings/issues) • [Changelog](CHANGELOG.md) • [中文](README.md) / [English](README.en.md)
+
+</div>
+
+---
+
+## What changes
+
+| | Before | After |
+|---|---|---|
+| Shape | 800×800 centered modal over a mask | Full-window page, no mask |
+| Exit | Small ✕ at the top right | One "← Settings" row at the top left |
+| Rail | 188px | 248px with a hairline divider |
+| Content | 800px wide, rows stretched | One column capped at 880px |
+
+The top-left "← Settings" is **a single button**: the arrow and the title share one
+hover surface, exactly like the "New session" / "Plugins" rows in the main sidebar.
+Clicking either the arrow or the label goes back.
+
+On macOS the top strip automatically clears the traffic lights and doubles as the
+window drag region; it collapses when the window is fullscreen.
+
+## Install
+
+### From GitHub (recommended)
+
+```bash
+dsh plugin --profile desktop add github:functy23/dsh-fullscreen-settings
+```
+
+Then **reload the UI** (menu "DSH NEXT → Reload UI", or Cmd+R).
+
+### Manual local mount
+
+Append to `~/.dsh/profiles/<profile>/cordis.patch.yml`:
+
+```yaml
+- insert:
+    - id: ui-fullscreen-settings
+      name: /absolute/path/to/dsh-fullscreen-settings/lib/index.js
+```
+
+The host half hot-reloads, but the client module graph is fetched at page load —
+reload the UI either way.
+
+## How it works
+
+The host half is empty (`lib/index.js` only exports an empty `apply()`); everything
+happens in the client half, in two independent moves:
+
+1. **One stylesheet**, anchored on the product's own
+   `div[data-shortcut-modal="settings"]` attribute and element selectors
+   (`> nav` / `> div`) — no CSS Modules hashes, so a rebuild cannot break it.
+2. **Shadowing the official `settings.header` single-slot occupant.** A single slot
+   renders its lowest-priority entry; the official one sits at priority 0, so this
+   plugin registers at `-1000` and becomes the top-left row.
+
+Closing calls `closeTopModal()` from `@deepseek-ai/dsh-client-ui-primitives` — the
+very function the official settings shortcut uses — with a click on the official
+close button as fallback.
+
+No official file is patched or bundled; if DSH changes a detail after an upgrade,
+the worst case is that the styling falls back to the stock dialog.
+
+## Layout
+
+```
+dsh-fullscreen-settings/
+├─ lib/
+│  ├─ index.js        host half: empty apply()
+│  └─ client.js       client half: stylesheet + "← Settings" button
+├─ tests/
+│  └─ client.test.mjs zero-dependency unit tests (node --test)
+├─ assets/icon.svg
+├─ package.json       dsh.client declaration + test script
+└─ README.md / README.en.md / CHANGELOG.md / LICENSE
+```
+
+`lib/` is the source; there is no build step.
+
+## Compatibility
+
+Verified against DSH `0.2.0-rc.1` (DSH NEXT `2.0.16-next`). Only product-owned
+attributes, the slot contract and theme variables (`--dsw-alias-*` /
+`--dsh-frame-*`) are used.
+
+## Rollback
+
+Remove the `- insert:` block (or run
+`dsh plugin --profile desktop remove dsh-fullscreen-settings`) and reload the UI.
+
+## License
+
+[MIT](LICENSE) © 2026 Functy
