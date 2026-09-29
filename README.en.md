@@ -42,17 +42,23 @@ window drag region; it collapses when the window is fullscreen.
 
 ## Install
 
-### From GitHub (recommended)
+The **desktop** profile of DSH NEXT is managed exclusively by the Electron app
+(`dsh plugin --profile desktop …` is refused with "profile desktop is managed
+exclusively by the Electron application"), so install it one of these ways:
 
-```bash
-dsh plugin --profile desktop add github:functy23/dsh-fullscreen-settings
+### In-app (recommended)
+
+On the "Plugins" page, paste into the install field:
+
+```
+github.com/functy23/dsh-fullscreen-settings
 ```
 
-Then **reload the UI** (menu "DSH NEXT → Reload UI", or Cmd+R).
+`github:functy23/dsh-fullscreen-settings` works too.
 
-### Manual local mount
+### Manual mount (this plugin is currently installed this way)
 
-Append to `~/.dsh/profiles/<profile>/cordis.patch.yml`:
+Append to `~/.dsh/profiles/desktop/cordis.patch.yml`:
 
 ```yaml
 - insert:
@@ -60,8 +66,16 @@ Append to `~/.dsh/profiles/<profile>/cordis.patch.yml`:
       name: /absolute/path/to/dsh-fullscreen-settings/lib/index.js
 ```
 
-The host half hot-reloads, but the client module graph is fetched at page load —
-reload the UI either way.
+### Other profiles
+
+`web` / `dsh-tui` are not restricted:
+
+```bash
+dsh plugin --profile web add github:functy23/dsh-fullscreen-settings
+```
+
+Either way, **reload the UI** afterwards (menu "DSH NEXT → Reload UI", or Cmd+R) —
+the host half hot-reloads, but the client module graph is fetched at page load.
 
 ## How it works
 
@@ -106,8 +120,8 @@ attributes, the slot contract and theme variables (`--dsw-alias-*` /
 
 ## Rollback
 
-Remove the `- insert:` block (or run
-`dsh plugin --profile desktop remove dsh-fullscreen-settings`) and reload the UI.
+Remove the `- insert:` block (or uninstall it on that profile's plugins page) and
+reload the UI.
 
 ## License
 

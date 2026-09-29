@@ -40,26 +40,40 @@ macOS 上顶部会自动让开红绿灯，那条留白同时是窗口拖动区�
 
 ## 安装
 
-### 从 GitHub 安装（推荐）
+DSH NEXT 的 **desktop** profile 由 Electron 应用独占管理（`dsh plugin --profile desktop …`
+会被拒绝：`profile desktop is managed exclusively by the Electron application`），
+按下面任一方式安装：
 
-```bash
-dsh plugin --profile desktop add github:functy23/dsh-fullscreen-settings
+### 方式一：应用内安装（推荐）
+
+在侧栏「插件」页的安装输入框里填：
+
+```
+github.com/functy23/dsh-fullscreen-settings
 ```
 
-装完**刷新界面**（菜单「DSH NEXT → 重新加载界面」，或 Cmd+R）即可生效。
+`github:functy23/dsh-fullscreen-settings` 同样可以。
 
-### 手动挂载本地副本
+### 方式二：手动挂载（本插件当前就是这么装的）
 
-在 `~/.dsh/profiles/<profile>/cordis.patch.yml` 末尾追加：
+在 `~/.dsh/profiles/desktop/cordis.patch.yml` 末尾追加：
 
 ```yaml
 - insert:
     - id: ui-fullscreen-settings
-      name: /absolute/path/to/dsh-fullscreen-settings/lib/index.js
+      name: /绝对路径/dsh-fullscreen-settings/lib/index.js
 ```
 
-profile patch 会让宿主热重组，但**客户端模块图在页面加载时取得** —— 无论用哪种方式，
-改完都要刷新界面。
+### 其他 profile
+
+`web` / `dsh-tui` profile 不受此限制，可以直接用 CLI：
+
+```bash
+dsh plugin --profile web add github:functy23/dsh-fullscreen-settings
+```
+
+无论哪种方式，装完都要**刷新界面**（菜单「DSH NEXT → 重新加载界面」，或 Cmd+R）——
+profile patch 会让宿主热重组，但客户端模块图是在页面加载时取得的。
 
 ## 原理
 
@@ -110,7 +124,7 @@ node --check lib/client.js
 
 ## 回滚
 
-删掉 `cordis.patch.yml` 里那段 `- insert:`（或 `dsh plugin --profile desktop remove dsh-fullscreen-settings`），
+删掉 `cordis.patch.yml` 里那段 `- insert:`（或在该 profile 的插件页里卸载），
 刷新界面即可；设置会回到原来的居中弹窗。
 
 ## License
