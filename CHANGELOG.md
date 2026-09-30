@@ -2,7 +2,10 @@
 
 版本号即 git tag，遵循 [Semantic Versioning](https://semver.org/lang/zh-CN/)。
 
-## [0.1.5] — 2026-09-30
+## [0.1.6] — 2026-09-30
+
+- 新增 `screenshots.json`（与 package.json 同级）：按 awesome-dsh-plugin 的约定，插件市场详情页的截图由作者自己在仓库里声明，取 `assets/settings-fullpage.png`。以后换图推自己的仓库即可，不必再提 PR。
+- 说明：0.1.5 没能发到 npm —— registry 把它记成了 staged 版本（`npm stage list` 里又看不到），重发会被 E409 顶回来，所以改用 0.1.6 发布；内容与 0.1.5 相同。
 
 - 新增 `screenshots.json`（与 package.json 同级）：按 awesome-dsh-plugin 的约定，插件市场详情页的截图由作者自己在仓库里声明，取 `assets/settings-fullpage.png`。
 
