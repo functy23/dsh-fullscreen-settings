@@ -1,7 +1,7 @@
 {
   "name": "dsh-fullscreen-settings",
   "displayName": "DSH Fullscreen Settings",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "把 DSH 的设置弹窗改成 Codex 风格整页全屏设置页 — Codex-style full-page settings for DeepSeek Harness.",
   "author": "Functy",
   "keywords": [

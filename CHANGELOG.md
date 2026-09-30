@@ -2,6 +2,14 @@
 
 版本号即 git tag，遵循 [Semantic Versioning](https://semver.org/lang/zh-CN/)。
 
+## [0.1.1] — 2026-09-30
+
+- 项目图标换成新版卡片图（`assets/icon.svg`），README 按宽度 150 等比展示。
+- README 去掉 DSH NEXT 特有的措辞：安装章节改为通用的 `dsh plugin add` /
+  手写 profile patch，生效方式只说「刷新页面；没生效就重启 DSH 客户端」。
+
+[0.1.1]: https://github.com/functy23/dsh-fullscreen-settings/releases/tag/v0.1.1
+
 ## [0.1.0] — 2026-09-30
 
 首个版本。
