@@ -24,6 +24,10 @@
 
 ---
 
+## 展示
+
+<img src="assets/settings-fullpage.png" width="1000" alt="设置整页全屏：左上角是「← 设置」，左栏是分类，右侧是内容">
+
 ## 效果
 
 | | 改动前 | 改动后 |
@@ -98,6 +102,7 @@ dsh-fullscreen-settings/
 ├─ tests/
 │  └─ client.test.mjs 零依赖单元测试（node --test）
 ├─ icon.svg            插件列表图标（package.json 的 icon 字段指向它）
+├─ assets/             README 展示图
 ├─ cordis.patch.yml   profile 层补丁：安装器靠它把插件挂进 profile 树
 ├─ package.json       dsh.bundle / dsh.client 声明 + test 脚本
 └─ README.md / README.en.md / CHANGELOG.md / LICENSE

@@ -24,6 +24,10 @@
 
 ---
 
+## Screenshot
+
+<img src="assets/settings-fullpage.png" width="1000" alt="Full-page settings: the back row at the top left, categories on the left, content on the right">
+
 ## What changes
 
 | | Before | After |
@@ -104,6 +108,7 @@ dsh-fullscreen-settings/
 ├─ tests/
 │  └─ client.test.mjs zero-dependency unit tests (node --test)
 ├─ icon.svg            plugin-list icon (referenced by the package.json icon field)
+├─ assets/             README screenshot
 ├─ cordis.patch.yml   profile-layer patch that mounts the plugin
 ├─ package.json       dsh.bundle / dsh.client declaration + test script
 └─ README.md / README.en.md / CHANGELOG.md / LICENSE
