@@ -2,6 +2,10 @@
 
 版本号即 git tag，遵循 [Semantic Versioning](https://semver.org/lang/zh-CN/)。
 
+## [0.1.5] — 2026-09-30
+
+- 新增 `screenshots.json`（与 package.json 同级）：按 awesome-dsh-plugin 的约定，插件市场详情页的截图由作者自己在仓库里声明，取 `assets/settings-fullpage.png`。
+
 ## [0.1.4] — 2026-09-30
 
 - 发布到 npm：`dsh plugin --profile <profile> add dsh-fullscreen-settings` 可直接从 registry 安装；README 中英版都补了 npm 安装方式。
