@@ -40,14 +40,25 @@ macOS 上顶部会自动让开红绿灯，那条留白同时是窗口拖动区�
 
 ## 安装
 
+### 从 npm 安装（推荐）
+
+```bash
+dsh plugin --profile <profile> add dsh-fullscreen-settings
+```
+
+也可以直接 `npm i dsh-fullscreen-settings` 单独拿包。
+
+### 从 GitHub 安装
+
 ```bash
 dsh plugin --profile <profile> add github:functy23/dsh-fullscreen-settings
 ```
 
 把 `<profile>` 换成要装的那个（例如 `web`）。
 
-如果该 profile 由宿主客户端托管、CLI 拒绝安装，就在客户端的插件页里用仓库地址
-`github.com/functy23/dsh-fullscreen-settings` 安装；或者直接改 profile ——
+如果该 profile 由宿主客户端托管、CLI 拒绝安装，就在客户端的插件页里填包名
+`dsh-fullscreen-settings`（或仓库地址 `github.com/functy23/dsh-fullscreen-settings`）；
+或者直接改 profile ——
 在 `~/.dsh/profiles/<profile>/cordis.patch.yml` 末尾追加：
 
 ```yaml

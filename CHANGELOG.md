@@ -2,6 +2,11 @@
 
 版本号即 git tag，遵循 [Semantic Versioning](https://semver.org/lang/zh-CN/)。
 
+## [0.1.4] — 2026-09-30
+
+- 发布到 npm：`dsh plugin --profile <profile> add dsh-fullscreen-settings` 可直接从 registry 安装；README 中英版都补了 npm 安装方式。
+- `package.json` 增加 `prepublishOnly` 守卫，`npm publish` 前会先跑一遍单元测试。
+
 ## [0.1.3] — 2026-09-30
 
 - **修好插件列表图标**：安装器读的是 package.json 顶层 `icon` 字段（相对路径、

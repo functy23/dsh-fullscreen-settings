@@ -42,6 +42,16 @@ window drag region; it collapses when the window is fullscreen.
 
 ## Install
 
+### From npm (recommended)
+
+```bash
+dsh plugin --profile <profile> add dsh-fullscreen-settings
+```
+
+You can also just `npm i dsh-fullscreen-settings` to get the package alone.
+
+### From GitHub
+
 ```bash
 dsh plugin --profile <profile> add github:functy23/dsh-fullscreen-settings
 ```
@@ -49,8 +59,9 @@ dsh plugin --profile <profile> add github:functy23/dsh-fullscreen-settings
 Replace `<profile>` with the one you are installing into (e.g. `web`).
 
 If that profile is managed by a host client and the CLI refuses the install, use the
-repository URL `github.com/functy23/dsh-fullscreen-settings` on that client's plugins
-page instead, or edit the profile directly — append to
+package name `dsh-fullscreen-settings` (or the repository URL
+`github.com/functy23/dsh-fullscreen-settings`) on that client's plugins page instead,
+or edit the profile directly — append to
 `~/.dsh/profiles/<profile>/cordis.patch.yml`:
 
 ```yaml
