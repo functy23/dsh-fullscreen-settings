@@ -2,6 +2,12 @@
 
 版本号即 git tag，遵循 [Semantic Versioning](https://semver.org/lang/zh-CN/)。
 
+## [0.1.3] — 2026-09-30
+
+- **修好插件列表图标**：安装器读的是 package.json 顶层 `icon` 字段（相对路径、
+  SVG/PNG/JPEG/WebP、≤256 KiB，且要随 `files` 发布），不是 `assets/` 目录。
+  图标挪到包根 `icon.svg`，补上 `"icon": "./icon.svg"`。
+
 ## [0.1.2] — 2026-09-30
 
 - **修好安装路径**：新增 profile 层补丁 `cordis.patch.yml` 并在 package.json 声明

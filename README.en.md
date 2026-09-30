@@ -1,6 +1,6 @@
 <div align="center">
 
-<img src="assets/icon.svg" width="150" alt="dsh-fullscreen-settings"/>
+<img src="icon.svg" width="150" alt="dsh-fullscreen-settings"/>
 
 # dsh-fullscreen-settings
 
@@ -92,7 +92,7 @@ dsh-fullscreen-settings/
 │  └─ client.js       client half: stylesheet + "← Settings" button
 ├─ tests/
 │  └─ client.test.mjs zero-dependency unit tests (node --test)
-├─ assets/icon.svg
+├─ icon.svg            plugin-list icon (referenced by the package.json icon field)
 ├─ cordis.patch.yml   profile-layer patch that mounts the plugin
 ├─ package.json       dsh.bundle / dsh.client declaration + test script
 └─ README.md / README.en.md / CHANGELOG.md / LICENSE

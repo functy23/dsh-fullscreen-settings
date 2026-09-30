@@ -1,6 +1,6 @@
 <div align="center">
 
-<img src="assets/icon.svg" width="150" alt="dsh-fullscreen-settings"/>
+<img src="icon.svg" width="150" alt="dsh-fullscreen-settings"/>
 
 # dsh-fullscreen-settings
 
@@ -86,7 +86,7 @@ dsh-fullscreen-settings/
 │  └─ client.js       浏览器半边：样式 + 「← 设置」按钮
 ├─ tests/
 │  └─ client.test.mjs 零依赖单元测试（node --test）
-├─ assets/icon.svg
+├─ icon.svg            插件列表图标（package.json 的 icon 字段指向它）
 ├─ cordis.patch.yml   profile 层补丁：安装器靠它把插件挂进 profile 树
 ├─ package.json       dsh.bundle / dsh.client 声明 + test 脚本
 └─ README.md / README.en.md / CHANGELOG.md / LICENSE
