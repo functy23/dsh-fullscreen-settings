@@ -2,6 +2,13 @@
 
 版本号即 git tag，遵循 [Semantic Versioning](https://semver.org/lang/zh-CN/)。
 
+## [0.1.2] — 2026-09-30
+
+- **修好安装路径**：新增 profile 层补丁 `cordis.patch.yml` 并在 package.json 声明
+  `dsh.bundle.patch`。此前只声明了 `dsh.client`，安装器会在依赖解析后判定
+  「declares no dsh.bundle — installed as a plain dependency, not a profile layer」，
+  包被下载进 `node_modules` 却不会挂进 profile 树，装完等于没装。
+
 ## [0.1.1] — 2026-09-30
 
 - 项目图标换成新版卡片图（`assets/icon.svg`），README 按宽度 150 等比展示。

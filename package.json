@@ -1,7 +1,7 @@
 {
   "name": "dsh-fullscreen-settings",
   "displayName": "DSH Fullscreen Settings",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "把 DSH 的设置弹窗改成 Codex 风格整页全屏设置页 — Codex-style full-page settings for DeepSeek Harness.",
   "author": "Functy",
   "keywords": [
@@ -28,10 +28,12 @@
     "./client": {
       "default": "./lib/client.js"
     },
+    "./cordis.patch.yml": "./cordis.patch.yml",
     "./package.json": "./package.json"
   },
   "files": [
     "lib",
+    "cordis.patch.yml",
     "README.md",
     "README.en.md",
     "CHANGELOG.md",
@@ -44,6 +46,9 @@
   "homepage": "https://github.com/functy23/dsh-fullscreen-settings#readme",
   "bugs": "https://github.com/functy23/dsh-fullscreen-settings/issues",
   "dsh": {
+    "bundle": {
+      "patch": "./cordis.patch.yml"
+    },
     "client": {
       "platform": "web",
       "inject": [

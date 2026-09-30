@@ -93,7 +93,8 @@ dsh-fullscreen-settings/
 ├─ tests/
 │  └─ client.test.mjs zero-dependency unit tests (node --test)
 ├─ assets/icon.svg
-├─ package.json       dsh.client declaration + test script
+├─ cordis.patch.yml   profile-layer patch that mounts the plugin
+├─ package.json       dsh.bundle / dsh.client declaration + test script
 └─ README.md / README.en.md / CHANGELOG.md / LICENSE
 ```
 

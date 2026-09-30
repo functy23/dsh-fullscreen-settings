@@ -87,7 +87,8 @@ dsh-fullscreen-settings/
 ├─ tests/
 │  └─ client.test.mjs 零依赖单元测试（node --test）
 ├─ assets/icon.svg
-├─ package.json       dsh.client 声明 + test 脚本
+├─ cordis.patch.yml   profile 层补丁：安装器靠它把插件挂进 profile 树
+├─ package.json       dsh.bundle / dsh.client 声明 + test 脚本
 └─ README.md / README.en.md / CHANGELOG.md / LICENSE
 ```
 
