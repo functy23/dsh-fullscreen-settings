@@ -1,6 +1,6 @@
 <div align="center">
 
-<img src="assets/icon.svg" width="96" height="96" alt="dsh-fullscreen-settings"/>
+<img src="assets/icon.svg" width="150" alt="dsh-fullscreen-settings"/>
 
 # dsh-fullscreen-settings
 
@@ -42,23 +42,16 @@ window drag region; it collapses when the window is fullscreen.
 
 ## Install
 
-The **desktop** profile of DSH NEXT is managed exclusively by the Electron app
-(`dsh plugin --profile desktop …` is refused with "profile desktop is managed
-exclusively by the Electron application"), so install it one of these ways:
-
-### In-app (recommended)
-
-On the "Plugins" page, paste into the install field:
-
-```
-github.com/functy23/dsh-fullscreen-settings
+```bash
+dsh plugin --profile <profile> add github:functy23/dsh-fullscreen-settings
 ```
 
-`github:functy23/dsh-fullscreen-settings` works too.
+Replace `<profile>` with the one you are installing into (e.g. `web`).
 
-### Manual mount (this plugin is currently installed this way)
-
-Append to `~/.dsh/profiles/desktop/cordis.patch.yml`:
+If that profile is managed by a host client and the CLI refuses the install, use the
+repository URL `github.com/functy23/dsh-fullscreen-settings` on that client's plugins
+page instead, or edit the profile directly — append to
+`~/.dsh/profiles/<profile>/cordis.patch.yml`:
 
 ```yaml
 - insert:
@@ -66,16 +59,10 @@ Append to `~/.dsh/profiles/desktop/cordis.patch.yml`:
       name: /absolute/path/to/dsh-fullscreen-settings/lib/index.js
 ```
 
-### Other profiles
+Then **refresh the page**; if it does not take effect, **restart the DSH client**.
 
-`web` / `dsh-tui` are not restricted:
-
-```bash
-dsh plugin --profile web add github:functy23/dsh-fullscreen-settings
-```
-
-Either way, **reload the UI** afterwards (menu "DSH NEXT → Reload UI", or Cmd+R) —
-the host half hot-reloads, but the client module graph is fetched at page load.
+(The profile patch hot-reloads the host half, but the client module graph is fetched
+at page load, so a page load is always required.)
 
 ## How it works
 
@@ -114,14 +101,14 @@ dsh-fullscreen-settings/
 
 ## Compatibility
 
-Verified against DSH `0.2.0-rc.1` (DSH NEXT `2.0.16-next`). Only product-owned
-attributes, the slot contract and theme variables (`--dsw-alias-*` /
-`--dsh-frame-*`) are used.
+Verified against DSH `0.2.0-rc.1`. Only product-owned attributes, the slot
+contract and theme variables (`--dsw-alias-*` / `--dsh-frame-*`) are used; nothing
+depends on a particular desktop shell.
 
 ## Rollback
 
 Remove the `- insert:` block (or uninstall it on that profile's plugins page) and
-reload the UI.
+refresh the page (or restart the DSH client).
 
 ## License
 

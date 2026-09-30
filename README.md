@@ -1,6 +1,6 @@
 <div align="center">
 
-<img src="assets/icon.svg" width="96" height="96" alt="dsh-fullscreen-settings"/>
+<img src="assets/icon.svg" width="150" alt="dsh-fullscreen-settings"/>
 
 # dsh-fullscreen-settings
 
@@ -40,23 +40,15 @@ macOS 上顶部会自动让开红绿灯，那条留白同时是窗口拖动区�
 
 ## 安装
 
-DSH NEXT 的 **desktop** profile 由 Electron 应用独占管理（`dsh plugin --profile desktop …`
-会被拒绝：`profile desktop is managed exclusively by the Electron application`），
-按下面任一方式安装：
-
-### 方式一：应用内安装（推荐）
-
-在侧栏「插件」页的安装输入框里填：
-
-```
-github.com/functy23/dsh-fullscreen-settings
+```bash
+dsh plugin --profile <profile> add github:functy23/dsh-fullscreen-settings
 ```
 
-`github:functy23/dsh-fullscreen-settings` 同样可以。
+把 `<profile>` 换成要装的那个（例如 `web`）。
 
-### 方式二：手动挂载（本插件当前就是这么装的）
-
-在 `~/.dsh/profiles/desktop/cordis.patch.yml` 末尾追加：
+如果该 profile 由宿主客户端托管、CLI 拒绝安装，就在客户端的插件页里用仓库地址
+`github.com/functy23/dsh-fullscreen-settings` 安装；或者直接改 profile ——
+在 `~/.dsh/profiles/<profile>/cordis.patch.yml` 末尾追加：
 
 ```yaml
 - insert:
@@ -64,16 +56,9 @@ github.com/functy23/dsh-fullscreen-settings
       name: /绝对路径/dsh-fullscreen-settings/lib/index.js
 ```
 
-### 其他 profile
+装完**刷新页面**即可；如果没生效，**重启 DSH 客户端**。
 
-`web` / `dsh-tui` profile 不受此限制，可以直接用 CLI：
-
-```bash
-dsh plugin --profile web add github:functy23/dsh-fullscreen-settings
-```
-
-无论哪种方式，装完都要**刷新界面**（菜单「DSH NEXT → 重新加载界面」，或 Cmd+R）——
-profile patch 会让宿主热重组，但客户端模块图是在页面加载时取得的。
+（profile patch 会让宿主热重组，但客户端模块图是在页面加载时取得的，所以总是需要刷新页面。）
 
 ## 原理
 
@@ -106,7 +91,7 @@ dsh-fullscreen-settings/
 └─ README.md / README.en.md / CHANGELOG.md / LICENSE
 ```
 
-`lib/` 就是源码，没有构建步骤；改完刷新界面即可。
+`lib/` 就是源码，没有构建步骤；改完刷新页面即可。
 
 ## 开发
 
@@ -118,14 +103,13 @@ node --check lib/client.js
 
 ## 兼容性
 
-按 DSH `0.2.0-rc.1`（DSH NEXT `2.0.16-next`，窗口 `titleBarStyle: hiddenInset`，
-红绿灯 x=16 y=18）实测。用到的都是产品自有属性、插槽契约与主题变量
-（`--dsw-alias-*` / `--dsh-frame-*`），跨主题安全。
+按 DSH `0.2.0-rc.1` 实测。用到的都是产品自有属性、插槽契约与主题变量
+（`--dsw-alias-*` / `--dsh-frame-*`），不依赖某个具体的桌面外壳。
 
 ## 回滚
 
 删掉 `cordis.patch.yml` 里那段 `- insert:`（或在该 profile 的插件页里卸载），
-刷新界面即可；设置会回到原来的居中弹窗。
+刷新页面即可；设置会回到原来的居中弹窗。
 
 ## License
 
