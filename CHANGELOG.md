@@ -5,7 +5,7 @@
 ## [0.1.6] — 2026-09-30
 
 - 新增 `screenshots.json`（与 package.json 同级）：按 awesome-dsh-plugin 的约定，插件市场详情页的截图由作者自己在仓库里声明，取 `assets/settings-fullpage.png`。以后换图推自己的仓库即可，不必再提 PR。
-- 说明：0.1.5 没能发到 npm —— registry 把它记成了 staged 版本（`npm stage list` 里又看不到），重发会被 E409 顶回来，所以改用 0.1.6 发布；内容与 0.1.5 相同。
+- 说明：0.1.5 的推送在 registry 侧经历了 staging 延迟（发布命令先超时，重发被 `E409 Cannot publish over previously staged version` 拒绝），因此补发了内容相同的 0.1.6；事后 0.1.5 也正常落库，npm 上两个版本都在。
 
 - 新增 `screenshots.json`（与 package.json 同级）：按 awesome-dsh-plugin 的约定，插件市场详情页的截图由作者自己在仓库里声明，取 `assets/settings-fullpage.png`。
 
