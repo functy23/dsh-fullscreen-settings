@@ -2,7 +2,7 @@
 
 > 给**接手这个仓库的 Agent** 的交接笔记。面向用户的文档是 [README.md](README.md) / [README.en.md](README.en.md)，
 > 本文件是内部笔记，可以写实现细节、踩坑和本机环境。
-> 最后核对：2026-09-30，对应 `v0.1.6`。
+> 最后核对：2026-10-01，对应 `v0.1.6`。
 
 ## 0. 一句话
 
@@ -134,16 +134,21 @@ npm publish                     # 输出结尾应有 "+ dsh-fullscreen-settings@
 
 | 商店 | 规则要点 | 我们的状态 |
 |---|---|---|
-| [awesome-dsh-plugin](https://github.com/awesome-dsh-plugin/awesome-dsh-plugin) | PR 加**一个**文件 `data/plugins/<owner>__<repo>.yml`；要 `dsh.bundle`、真实代码、仓库满 **1 天**、`dsh-plugin` topic；描述不许带营销词 | **PR [#6247](https://github.com/awesome-dsh-plugin/awesome-dsh-plugin/pull/6247)**：`check` 通过；`Submission gate` 只因仓库年龄（0.9 天）红，脚本每 6 小时自动重跑，**2026-10-01 01:04（CST）后自动转绿，不要重提** |
+| **npm** | `npm publish`，账号 `funlze` | **`dsh-fullscreen-settings@0.1.6` 已发布 ✅**（tarball 200，`dist-tags.latest=0.1.6`） |
+| [awesome-dsh-plugin](https://github.com/awesome-dsh-plugin/awesome-dsh-plugin) | PR 加**一个**文件 `data/plugins/<owner>__<repo>.yml`；要 `dsh.bundle`、真实代码、仓库满 **1 天**、`dsh-plugin` topic；描述不许带营销词 | **PR [#6247](https://github.com/awesome-dsh-plugin/awesome-dsh-plugin/pull/6247)** OPEN、`MERGEABLE`；`check` + `Submission gate` **均已 SUCCESS**（仓库年龄闸门已过）。无 push 权，等维护者合并；已留言催合。合并后 dshmarket 白名单随之生效 |
 | [DSH 1024Store](https://github.com/imsai-sh/awesome-deepseek-harness-plugins)（DSH Desktop 内置社区市场的目录源） | PR 加 `catalog/plugins/<owner>--<repo>.json`；闸门读仓库确认 `dsh.bundle.patch` 与补丁文件存在 | **PR [#550](https://github.com/imsai-sh/awesome-deepseek-harness-plugins/pull/550) 已合并 ✅** |
+| [deepseek-plugin-store](https://github.com/Ericwong5021/deepseek-plugin-store) | 走插件收录 Issue 表单 → bot 开 PR | **Issue [#293](https://github.com/Ericwong5021/deepseek-plugin-store/issues/293)** OPEN（`gov:approved` + `gov:pr-open`）；bot **PR [#294](https://github.com/Ericwong5021/deepseek-plugin-store/pull/294)** OPEN（`mergeStateStatus: BLOCKED`，等维护者）。已留言催合 |
+| [dsh-plugin-shop](https://github.com/LivXue/dsh-plugin-shop)（LivXue） | **不用投稿**：keywords 含 `dsh-plugin`/`deepseek-harness` + npm 发布 → 每日收割。查拒绝：`curl -s https://LivXue.github.io/dsh-plugin-shop/v1/report.md \| grep 包名` | keywords + npm 已齐；公开 catalog 快照仍是 `2026-09-29`（我们 09-30 才发 npm），**等下一次 daily build** 自动进架。报告里尚无本包名 |
+| [YELEBAI/dsh-plugin-marketplace](https://github.com/YELEBAI/dsh-plugin-marketplace) | 每 2h 扫 `topic:dsh-plugin`，写入中心 Registry | **`registry/plugins.json` 已有 `functy23/dsh-fullscreen-settings` ✅**（自动） |
 | [dshfind](https://dshfind.com) | 加 `dsh-plugin` topic，每日 02:17 UTC 自动同步 | topic 已有 → 无需操作 |
-| [dsh-plugin-radar](https://github.com/AdamPlatin123/dsh-plugin-radar) | 加 topic 后约 8 小时自动收录 | topic 已有 → 无需操作 |
-| [dshmarket](https://github.com/dsh-market/dsh-market)（应用内市场） | 只允许安装 awesome-dsh-plugin 白名单内的来源 | 由 #6247 决定 |
-| [deepseek-plugin-store](https://github.com/Ericwong5021/deepseek-plugin-store) | 走插件收录 Issue 表单 | **Issue [#293](https://github.com/Ericwong5021/deepseek-plugin-store/issues/293)** 已开 |
+| [dsh-plugin-radar](https://github.com/AdamPlatin123/dsh-plugin-radar) | 加 topic 后约 8 小时自动收录 | topic 已有 → 无需操作（code search 可能延迟） |
+| [dshmarket](https://github.com/dsh-market/dsh-market)（应用内市场） | 只允许安装 awesome-dsh-plugin 白名单内的来源 | **卡在 #6247 合并** |
 
 投稿素材：`data/plugins/functy23__dsh-fullscreen-settings.yml`（awesome）与
 `catalog/plugins/functy23--dsh-fullscreen-settings.json`（1024Store）两份文件的内容都在对应 PR 里，
 仓库本身**不放**这两份文件。
+
+其它「市场」客户端（`bradeGithub/DSH-Plugins-Marketplace`、`AwesomeHou/dsh-plugin-marketplace` 等）多数是扫 GitHub topic / 转发 awesome 目录，**不需要单独投稿**。
 
 ## 9. 硬性不变量（改代码别破）
 
